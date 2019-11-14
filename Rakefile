@@ -1,9 +1,6 @@
 require 'rspec'
 require 'readline'
-require_relative 'lib/subset_sum'
-
-# RSpec::Core::RakeTask.new(:spec)
-
+require_relative 'lib/format'
 
 task :get_brand_orders do
 
@@ -14,6 +11,7 @@ task :get_brand_orders do
     while orders = Readline.readline('> ', true).scan(/((\d+) +(FLAC|IMG|VID))/)
       # p line
 
+      ruby -r "./format.rb" -e "Format.test"
     end
 
     puts "done"

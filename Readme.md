@@ -9,4 +9,3 @@
 # references
 
     http://bogojoker.com/readline/
-    https://github.com/jeremyevans/ruby-subset_sum
