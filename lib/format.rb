@@ -7,31 +7,42 @@ class Format
 
   def initialize(quantity)
     @quantity = (quantity.to_i > 0) ? quantity.to_i : 0
+    @orders = []
   end
 
   def brand_orders
     return [] if @quantity <= 0
-    orders = []
 
-    # sets = bundle.keys
-    # sets.each do |set|
-    #   count = @quantity / set
-    #   return if count == 0
-    #
-    #   if count > 0
-    #     orders << { set_size: set, count: count, amount: (count * bundle[set]) }
-    #   end
-    # end
 
-    orders
+    quantity = @quantity
+    loop do
+      break unless (order = find_order_for_quantity(quantity))
+
+      # check if there is a remaining value to evaluate
+      quantity = quantity % order[:set_key]
+
+      @orders << order
+    end
+
+    @orders
   end
 
-  def get_order_for_quantity(quantity)
-    value = quantity
-  end
+  def find_order_for_quantity(quantity)
+    return nil if quantity < 1
 
-  def find_bundle_for_quantity(value)
+    set_keys = bundles.keys
 
+    set_keys.each do |set_key|
+      count = quantity / set_key
+
+      # nothing found
+      return nil if count == 0
+
+      # check next if set_key if set_key > count
+      # and we have not reached the max value
+      next if count > set_key && set_keys.max != set_key
+      return { set_key: set_key, count: count, amount: (count * bundles[set_key]) }
+    end
   end
 
   def code
@@ -39,7 +50,7 @@ class Format
     "VID"
   end
 
-  def bundle
+  def bundles
     # raise "No Format Bundle for this class"
     {
       3 => 570,

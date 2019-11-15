@@ -8,11 +8,17 @@ task :get_brand_orders do
   stty_save = `stty -g`.chomp
 
   begin
-    while orders = Readline.readline('> ', true).scan(/((\d+) +(FLAC|IMG|VID))/)
-      # p line
+    orders = Readline.readline('> ', true).scan(/((\d+) +(FLAC|IMG|VID))/)
 
-      ruby -r "./format.rb" -e "Format.test"
+    if orders.empty?
+      p "No orders found"
+      exit
     end
+
+    # while
+    #   p orders
+    #   # ruby -r "./format.rb" -e "Format.test"
+    # end
 
     puts "done"
   rescue Interrupt => e
