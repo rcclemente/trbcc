@@ -1,12 +1,12 @@
 require_relative 'subset_sum'
 
 class Format
-  def self.test(value = 10)
-    o = Format.new value
-    o.check_brand_orders
-    # puts o.orders
-    puts o.print_order
-  end
+  # def self.test(value = 10)
+  #   o = Format.new value
+  #   o.check_brand_orders
+  #   # puts o.orders
+  #   puts o.print_order
+  # end
 
   def initialize(quantity)
     @quantity = (quantity.to_i > 0) ? quantity.to_i : 0

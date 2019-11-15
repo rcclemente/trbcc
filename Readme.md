@@ -6,6 +6,3 @@
 
     bundle exec rake
 
-# references
-
-    http://bogojoker.com/readline/

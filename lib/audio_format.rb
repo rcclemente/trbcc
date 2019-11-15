@@ -7,7 +7,7 @@ class AudionFormat < Format
   def bundles
     {
       3 => 427.50,
-      5 => 810,
+      6 => 810,
       9 => 1147.50,
     }
   end
