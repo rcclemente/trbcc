@@ -1,3 +1,5 @@
+require_relative 'format'
+
 class ImageFormat < Format
   def code
     "IMG"
@@ -6,7 +8,7 @@ class ImageFormat < Format
   def bundles
     {
       5 => 480,
-      9 => 800,
+      10 => 800
     }
   end
 end

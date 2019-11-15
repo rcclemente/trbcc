@@ -1,3 +1,4 @@
+require_relative 'format'
 class AudionFormat < Format
   def code
     "FLAC"

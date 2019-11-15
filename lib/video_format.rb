@@ -1,3 +1,4 @@
+require_relative 'format'
 class VideoFormat < Format
   def code
     "VID"
