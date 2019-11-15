@@ -48,8 +48,6 @@ class Format
       # nothing found
       return nil if count == 0
 
-      # require "byebug"
-      # byebug
       # check next if set_key > count
       # and we have not reached the max value
       next if count > set_key && max_set_key != set_key

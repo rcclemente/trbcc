@@ -10,7 +10,7 @@ task :get_brand_orders do
 
   # ruby -r "./format.rb" -e "Format.test"
   begin
-    orders = Readline.readline('> ', true).scan(/((\d+) +(FLAC|IMG|VID))/)
+    orders = Readline.readline('Input brand order> ', true).scan(/((\d+) +(FLAC|IMG|VID))/)
 
     if orders.empty?
       p "No orders found"
