@@ -8,9 +8,16 @@ class Format
   #   puts o.print_order
   # end
 
-  def initialize(quantity)
+  class MethodNotImlemented < StandardError; end
+
+  def self.get_brand_orders(quantity)
+    o = self.new quantity
+    o.check_brand_orders
+    o
+  end
+
+  def initialize(quantity = 0)
     @quantity = (quantity.to_i > 0) ? quantity.to_i : 0
-    @orders = []
   end
 
   def check_brand_orders
@@ -20,7 +27,7 @@ class Format
 
     if !set_keys.nil?
       set_keys.each do |set_key|
-        @orders << get_order(1, set_key)
+        orders << get_order(1, set_key)
       end
     else
       quantity = @quantity
@@ -31,7 +38,7 @@ class Format
         # check if there is a remaining value to evaluate
         quantity = quantity % order[:set_key]
 
-        @orders << order
+        orders << order
       end
     end
   end
@@ -65,25 +72,25 @@ class Format
   end
 
   def empty?
-    @orders.empty?
+    orders.empty?
   end
 
   def print_order
-    return if @orders.empty?
+    return if orders.empty?
 
-    puts "#{@quantity} #{code} $#{ @orders.sum {|o| o[:amount]} }"
-    @orders.each do |order|
+    puts "#{@quantity} #{code} $#{ orders.sum {|o| o[:amount]} }"
+    orders.each do |order|
       puts "    #{order[:count]} x #{order[:set_key]} $#{order[:amount]}"
     end
   end
 
   def code
-    raise "No Format Code for this class"
+    raise MethodNotImlemented
     # "IMG"
   end
 
   def bundles
-    raise "No Format Bundle for this class"
+    raise MethodNotImlemented
     # {
     #   5 => 480,
     #   10 => 800

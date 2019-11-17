@@ -1,7 +1,15 @@
-require 'rspec'
 require 'readline'
-# require_relative 'lib/format'
 Dir["lib/*.rb"].each {|file| require_relative file }
+
+begin
+  require 'rspec/core/rake_task'
+
+  RSpec::Core::RakeTask.new(:spec)
+
+  # task :default => :spec
+rescue LoadError
+  # no rspec available
+end
 
 task :get_brand_orders do
 
@@ -21,18 +29,14 @@ task :get_brand_orders do
       quantity, format = order[1], order[2]
       format_orders = case format
                       when 'FLAC'
-                        AudionFormat.new quantity
+                        AudionFormat.get_brand_orders quantity
                       when 'IMG'
-                        ImageFormat.new quantity
+                        ImageFormat.get_brand_orders quantity
                       when 'VID'
-                        VideoFormat.new quantity
+                        VideoFormat.get_brand_orders quantity
                       end
 
-      format_orders.check_brand_orders
-
-      unless format_orders.empty?
-        format_orders.print_order
-      end
+      format_orders.print_order unless format_orders.empty?
     end
 
     puts "done"
