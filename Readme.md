@@ -6,3 +6,7 @@
 
     bundle exec rake
 
+# running the tests
+
+    bundle exec rake rspec
+
