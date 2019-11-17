@@ -79,9 +79,9 @@ describe Format do
       end
     end
 
-    describe '.empty?' do
-      it "returns false" do
-        expect(subject.empty?).to be_falsey
+    describe '.orders' do
+      it "is empty" do
+        subject.orders.should == [{:set_key=>3, :count=>3, :price=>100, :amount=>300}]
       end
     end
   end

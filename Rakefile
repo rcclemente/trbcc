@@ -21,7 +21,7 @@ task :get_brand_orders do
     orders = Readline.readline('Input brand order> ', true).scan(/((\d+) +(FLAC|IMG|VID))/)
 
     if orders.empty?
-      p "No orders found"
+      puts "No orders found"
       exit
     end
 
