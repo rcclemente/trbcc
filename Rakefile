@@ -29,7 +29,7 @@ task :get_brand_orders do
       quantity, format = order[1], order[2]
       format_orders = case format
                       when 'FLAC'
-                        AudionFormat.get_brand_orders quantity
+                        AudioFormat.get_brand_orders quantity
                       when 'IMG'
                         ImageFormat.get_brand_orders quantity
                       when 'VID'

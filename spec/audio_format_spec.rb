@@ -1,7 +1,7 @@
 require_relative "../lib/audio_format.rb"
 
-describe AudionFormat do
-  subject{ AudionFormat.new 15 }
+describe AudioFormat do
+  subject{ AudioFormat.new 15 }
 
   before do
     subject.check_brand_orders

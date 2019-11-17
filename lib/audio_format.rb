@@ -1,5 +1,5 @@
 require_relative 'format'
-class AudionFormat < Format
+class AudioFormat < Format
   def code
     "FLAC"
   end
